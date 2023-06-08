@@ -24,9 +24,10 @@ readdirSync('./routers').map(r => app.use("/api/v1" , require(`./routers/${r}`))
 
 
 const port =process.env.PORT|| 5000;
+let option = {autoIndex:true};
 
 mongoose
-.connect(process.env.DATABASE)
+.connect(process.env.DATABASE,option)
 .then(()=>{
     app.listen(port,()=>{
         console.log(`connention successfully ${port}`);
